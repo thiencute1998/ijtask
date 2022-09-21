@@ -1,0 +1,630 @@
+<template>
+    <div class="component-task-list">
+        <div class="main-entry">
+            <div class="main-header">
+                <div class="main-header-padding">
+                  <b-row class="mb-2">
+                      <b-col md="6" class="col-24">
+                          <div class="main-header-item main-header-name">
+                              <span class="text-capitalize"><i class="fa fa-list mr-2"></i> Tài khoản kết chuyển</span>
+                          </div>
+                      </b-col>
+                      <b-col md="6" class="col-24"></b-col>
+                  </b-row>
+                  <b-row class="mb-2">
+                    <b-col class="col-lg-16 col-md-24 col-sm-24 col-24 mb-2 mb-lg-0 d-lg-flex justify-content-start align-items-center">
+                      <div class="main-header-item main-header-actions">
+                        <b-button class="main-header-action mr-2" variant="primary" @click="$_lists_handleAddNewItem" size="md">
+                          <i class="fa fa-plus"></i> Thêm
+                        </b-button>
+
+<!--                        <b-button class="main-header-action mr-2" variant="primary" @click="$_lists_handleAddNewItem" size="md">-->
+<!--                          <i class="fa fa-book"></i> Ghi sổ-->
+<!--                        </b-button>-->
+
+                        <b-dropdown variant="primary" id="dropdown-actions" @toggle="$_lists_onToggleActionMajor" disabled class="main-header-action mr-2" text="Thao tác">
+                          <b-dropdown-item @click="handleExportPrint">In</b-dropdown-item>
+                          <li class="dropdown b-dropdown dropright">
+                            <a class="dropdown-item dropdown-toggle d-lg-flex justify-content-between align-items-center border-0" data-toggle="dropdown" @click.stop="$_lists_onToggleDropdownSubMenu($event)" href="#">Nhập</a>
+                            <ul role="menu" tabindex="-1" class="dropdown-sub-menu dropdown-menu m-0">
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Excel</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Cvs</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Xml</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Json</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown b-dropdown dropright">
+                            <a class="dropdown-item dropdown-toggle d-lg-flex justify-content-between align-items-center border-0" data-toggle="dropdown" @click.stop="$_lists_onToggleDropdownSubMenu($event)" href="#">Xuất</a>
+                            <ul role="menu" tabindex="-1" class="dropdown-sub-menu dropdown-menu m-0">
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Excel</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Cvs</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Xml</a></li>
+                              <li role="presentation"><a role="menuitem" target="_self" href="#" class="dropdown-item">Json</a></li>
+                            </ul>
+                          </li>
+                          <b-dropdown-item :disabled="stage.disableActions">Chia sẻ</b-dropdown-item>
+                          <b-dropdown-item :disabled="stage.disableActions">Chat</b-dropdown-item>
+                          <b-dropdown-item :disabled="stage.disableActions">Zalo</b-dropdown-item>
+                          <b-dropdown-item :disabled="stage.disableActions">Phân quyền</b-dropdown-item>
+                          <b-dropdown-item :disabled="stage.disableActions || !stage.actionInactive.showInactive" v-if="stage.actionInactive.inactive == 0" @click="$_lists_handleChangeInActive">Đang hoạt động</b-dropdown-item>
+                          <b-dropdown-item :disabled="stage.disableActions || !stage.actionInactive.showInactive" v-if="stage.actionInactive.inactive == 1" @click="$_lists_handleChangeInActive">Ngừng hoạt động</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleDeleteItem" :disabled="stage.disableActions">Xóa</b-dropdown-item>
+                        </b-dropdown>
+                      </div>
+                      <div class="main-header-item main-header-search" style="flex: 1 1 auto">
+                          <div class="search-input">
+                              <input v-model="fullTextSearch" @keyup.enter="$_lists_handleFullTextSearch" type="text" placeholder="Tìm..."/>
+                          </div>
+                          <span class="search-icon" @click="$_lists_handleFullTextSearch"><i class="fa fa-search"></i></span>
+                      </div>
+                    </b-col>
+                    <b-col class="col-lg-8 col-md-24 col-sm-24 col-24">
+                      <div class="main-header-item main-header-icons">
+                        <b-button-group id="main-header-views" class="main-header-views">
+                          <b-dropdown id="dropdown-view-type" title="Loại hiển thị" menu-class="p-0" :class="[(stage.viewType === 'list' || stage.viewType === 'tree' || stage.viewType === 'select') ? 'view-active' : '']" class="app-dropdown-center" toggle-class="main-header-view">
+                            <template v-slot:button-content>
+                              <i class="fa fa-tree" v-if="stage.viewType === 'tree'"></i>
+                              <i class="fa fa-list" v-else></i>
+                            </template>
+                            <b-dropdown-item id="tooltip-view-list" title="Danh sách" @click="stage.viewType = 'list'"><i class="fa fa-list m-0"></i></b-dropdown-item>
+                            <b-dropdown-item id="tooltip-view-tree" title="Cây" @click="stage.viewType = 'tree'"><i class="fa fa-tree m-0"></i></b-dropdown-item>
+                          </b-dropdown>
+                          <b-button id="tooltip-view-kanban" title="Thẻ tin" @click="stage.viewType = 'kanban'" :class="[(stage.viewType === 'kanban') ? 'view-active' : '']" class="main-header-view"><i class="fa fa-th"></i></b-button>
+                          <b-button id="tooltip-view-filter" v-b-toggle.collapse-main-header-filter title="Lọc" class="main-header-view"><i class="fa fa-filter"></i></b-button>
+                        </b-button-group>
+                        <b-dropdown id="dropdown-per-page" title="Số bản ghi/trang" menu-class="p-0" :text="perPage" class="app-dropdown-center main-header-icon">
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(10)">10</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(15)">15</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(20)">20</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(30)">30</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(40)">40</b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleChangePerPage(50)">50</b-dropdown-item>
+                        </b-dropdown>
+                        <b-dropdown id="dropdown-inactive" title="Trạng thái" menu-class="p-0" class="app-dropdown-center main-header-icon">
+                          <template v-slot:button-content>
+                            <svg v-if="stage.filterInactive === 2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
+                            <i class="fa fa-circle-o m-0" v-if="stage.filterInactive === 0"></i>
+                            <i class="fa fa-ban m-0" v-if="stage.filterInactive === 1"></i>
+                          </template>
+                          <b-dropdown-item @click="$_lists_handleFilterInactive(2)" title="Trạng thái">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="fill: #73818f" width="16" height="16" viewBox="0 0 24 24"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
+                          </b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleFilterInactive(0)" title="Đang hoạt động"><i class="fa fa-circle-o m-0"></i></b-dropdown-item>
+                          <b-dropdown-item @click="$_lists_handleFilterInactive(1)" title="Ngừng hoạt động"><i class="fa fa-ban m-0"></i></b-dropdown-item>
+                        </b-dropdown>
+                        <div class="main-header-collapse" id="main-header-collapse" title="Co/giãn màn hình">
+                          <sidebar-toggle class="d-md-down-none btn" display="lg" :defaultOpen=true />
+                        </div>
+                      </div>
+                    </b-col>
+                  </b-row>
+                  <b-collapse id="collapse-main-header-filter">
+                    <div class="main-header-filter pt-2">
+                      <div class="row mb-2">
+                        <b-col>
+                            <div class="main-action d-lg-flex justify-content-end">
+                                <b-button variant="primary" size="md" @click="fetchData">
+                                    <i class="fa fa-search"></i> Tìm
+                                </b-button>
+                            </div>
+                        </b-col>
+                      </div>
+                    </div>
+                  </b-collapse>
+                </div>
+            </div>
+            <div class="main-body" :class="[(stage.viewType !== 'kanban') ? 'main-body-view-list' : 'main-body-view-kanban', (stage.viewType === 'tree') ? 'main-body-view-tree' : '']">
+                <b-card class="m-0 border-0" body-class="py-0 px-0">
+                    <div class="content-body">
+                      <div class="content-table content-body-list" v-if="stage.viewType === 'list' || stage.viewType === 'tree'">
+                        <div class="b-table-sticky-header table-responsive">
+                          <table role="table" aria-busy="false" aria-colcount="2" aria-multiselectable="true"
+                                 class="table b-table table-hover table-sm b-table-selectable b-table-select-multi">
+                            <thead role="rowgroup" class="thead-light">
+                            <tr role="row" class="">
+                              <th role="columnheader" scope="col" aria-label="Selected" class="pl-3" style="width: 3%;">
+                                  <b-form-checkbox class="text-left" @input="onToggleSelectAllRows($event)"></b-form-checkbox>
+                              </th>
+                              <th role="columnheader" scope="col" style="width: 11%; min-width: 110px" aria-sort="none" @click="sortTableByField($event, 'TransDate')" v-if="stage.viewType === 'list'">Loại</th>
+                              <th role="columnheader" scope="col" style="width: 11%; min-width: 110px" v-else>Loại</th>
+                              <th role="columnheader" scope="col" style="width: 25%; min-width: 200px" aria-sort="none" @click="sortTableByField($event, 'TransDate')" v-if="stage.viewType === 'list'">Tên HTTK</th>
+                              <th role="columnheader" scope="col" style="width: 25%; min-width: 200px" v-else>Tên HTTK</th>
+                              <th role="columnheader" scope="col" style="width: 12%; min-width: 120px" aria-sort="none" @click="sortTableByField($event, 'TransDate')" v-if="stage.viewType === 'list'">Số TK từ</th>
+                              <th role="columnheader" scope="col" style="width: 12%; min-width: 120px" v-else>Số TK từ</th>
+                              <th role="columnheader" scope="col" style="width: 12%; min-width: 120px" aria-sort="none" @click="sortTableByField($event, 'TransDate')" v-if="stage.viewType === 'list'">Số TK đến</th>
+                              <th role="columnheader" scope="col" style="width: 12%; min-width: 120px" v-else>Số TK đến</th>
+                              <th role="columnheader" scope="col" title="Diễn giải" style="width: 50%; min-width: 430px" aria-sort="none" @click="sortTableByField($event, 'Description')" v-if="stage.viewType === 'list'">Diễn giải</th>
+                              <th role="columnheader" scope="col" title="Diễn giải" style="width: 40%; min-width: 430px" v-else>Diễn giải</th>
+                            </tr>
+                            </thead>
+                            <tbody role="rowgroup">
+<!--                            <transition-group tag="tbody" name="slide-fade">-->
+                              <tr role="row" :key="'table-top-row'" class="b-table-top-row">
+                                <td role="cell" class="pl-3"></td>
+                                <td role="cell" class="">
+                                  <b-form-select v-model="modelSearch.CFAccountType" :options="CFAccountTypeSearchOption" @change="$_lists_handleSubmitSearch"></b-form-select>
+                                </td>
+                                <td role="cell" class="">
+                                  <b-form-input v-model="modelSearch.CoaTypeName" @change="$_lists_handleSubmitSearch">
+                                  </b-form-input>
+                                </td>
+                                <td role="cell" class="">
+                                  <b-form-input v-model="modelSearch.FromAccountNo" @change="$_lists_handleSubmitSearch">
+                                  </b-form-input>
+                                </td>
+                                <td role="cell" class="">
+                                  <b-form-input v-model="modelSearch.ToAccountNo" @change="$_lists_handleSubmitSearch">
+                                  </b-form-input>
+                                </td>
+                                <td role="cell" class="no-overflow">
+                                  <b-form-input v-model="modelSearch.Description" @change="$_lists_handleSubmitSearch">
+                                  </b-form-input>
+                                </td>
+                              </tr>
+                              <tr role="row" tabindex="0"
+                                  aria-selected="false"
+                                  :class="[(itemsArray[key].rowSelected) ? 'b-table-row-selected table-active' : '']"
+                                  :data-parent-id="item.ParentID"
+                                  v-if="!itemsArray[key].hidden"
+                                  :key="key"
+                                  v-for="(item, key) in itemsArray">
+                                <td aria-colindex="1" role="cell" class="pl-3">
+                                  <b-form-checkbox v-model="itemsArray[key].rowSelected" class="text-left" @input="onToggleRowSelected($event, item, key)"></b-form-checkbox>
+                                </td>
+                                <td @click="onRowClicked(item)" aria-colindex="2" role="cell" class="text-center">{{CFAccountTypeOption[item.CFAccountType]}}</td>
+                                <td @click="onRowClicked(item)" aria-colindex="2" role="cell" class="text-left">{{item.CoaTypeName }}</td>
+                                <td @click="onRowClicked(item)" aria-colindex="2" role="cell" class="text-center">{{item.FromAccountNo}}</td>
+                                <td @click="onRowClicked(item)" aria-colindex="2" role="cell" class="text-center">{{item.ToAccountNo}}</td>
+                                <td @click="onRowClicked(item)" aria-colindex="2" role="cell" class="text-left">{{item.Description}}</td>
+                              </tr>
+<!--                            </transition-group>-->
+                            </tbody>
+                          </table>
+                        </div>
+
+                        </div>
+                      <div class="content-body-kanban" v-if="stage.viewType === 'kanban'">
+                        <div class="kanban-items row">
+                          <div class="kanban-item col-lg-6 col-md-8 col-sm-12 col-24" v-for="(item, key) in itemsArray">
+                            <div class="kanban-item-inner" @click="$_lists_onFieldClicked(item)">
+                              <div class="kanban-record d-flex justify-content-between">
+<!--                                <span class="kanban-title">{{item.TaskName}}</span>-->
+                                <span class="kanban-title">{{getTaskName(item)}}</span>
+                              </div>
+                              <div class="kanban-record">
+                                <span>Mã số</span>
+                                <span>{{item.CoaTypeName }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </b-card>
+            </div>
+            <div class="main-footer">
+                <div class="d-flex flex-wrap justify-content-between align-items-center m-0">
+                    <div class="main-footer-pagination">
+                        <div class="overflow-auto">
+                            <b-pagination
+                                    v-model="currentPage"
+                                    :total-rows="rows"
+                                    :per-page="perPage"
+                                    aria-controls="my-table"
+                                    size="md"
+                            ></b-pagination>
+                        </div>
+                    </div>
+                    <div class="total-item">
+                        <span style="font-weight: 500">Tổng số: {{totalRows}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    import ApiService from '@/services/api.service';
+    import mixinLists from '@/mixins/lists';
+    import IjcoreUsersIcon from "@/components/IjcoreUsersIcon";
+    import IjcoreCompareTime from "@/components/IjcoreCompareTime";
+    import IjcoreDateRange from "@/components/IjcoreDateRange";
+    import IjcoreModalSearchInput from "@/components/IjcoreModalSearchInput";
+    import IjcoreSelect2Server from "@/components/IjcoreSelect2Server";
+    import IjcoreDatePicker from "@/components/IjcoreDatePicker";
+    import IjcoreCompareNumber from "@/components/IjcoreCompareNumber";
+    import IjcoreNumber from "@/components/IjcoreNumber";
+    import ClickOutside from 'vue-click-outside';
+
+    export default {
+      name: 'sysadmin-fstatuslist',
+      mixins: [mixinLists],
+      data() {
+          return {
+            selectedRows: [],
+            model: {
+              taskAssign: []
+            },
+            filter: {
+            },
+            stage: {
+              viewType: (this.$store.state.optionBehavior.viewType) ? this.$store.state.optionBehavior.viewType : 'list',
+              showModalSearchTcatelist: false
+            },
+            CFAccountTypeOption: [],
+            CFAccountTypeSearchOption: [],
+          }
+      },
+      components:{
+        IjcoreUsersIcon,
+        IjcoreCompareTime,
+        IjcoreDateRange,
+        IjcoreModalSearchInput,
+        IjcoreSelect2Server,
+        IjcoreDatePicker,
+        IjcoreCompareNumber,
+        IjcoreNumber,
+      },
+
+      computed: {
+
+        rows() {
+            return this.totalRows
+        },
+        inActiveOption() {
+            return inActiveOption;
+        },
+        captions: function() {
+          let fieldsTable = [
+            {key: 'selected', label: '', thStyle: 'width: 2%',tdClass: 'pl-3', thClass: 'pl-3'},
+            {key: 'CoaTypeName', label: 'Tên nghiệp vụ', field: 'CoaTypeName',searchOnTopRow: {type: 'text'}, thStyle: 'width: 8%'},
+            {key: 'Description', label: 'Diễn giải', headerTitle: 'Diễn giải', field: 'Description',searchOnTopRow: {type: 'text'}, thStyle: 'width: 8%'},
+          ];
+
+          return fieldsTable;
+        }
+      },
+      created() {
+        // init setting
+        this.settings.FieldID = 'CFAccountID';
+        this.settings.Table = 'act_cfaccount';
+        this.settings.FieldInactive = 'Inactive';
+
+        this.settings.ListApi = 'accounting/api/actcfaccount';
+        this.settings.DeleteApi = 'accounting/api/actcfaccount/delete';
+        this.settings.CreateRouter = 'accounting-actcfaccount-create';
+        this.settings.EditRouter = 'accounting-actcfaccount-edit';
+        this.settings.ViewRouter = 'accounting-actcfaccount-view';
+
+        this.modelSearch = {
+          CFAccountType: null,
+          CoaTypeName: '',
+          FromAccountNo: '',
+          ToAccountNo: '',
+          Description: ''
+        };
+        this.init();
+      },
+      updated() {
+          this.stage.updatedData = true;
+      },
+      mounted() {
+        this.$_lists_showMessage();
+      },
+      methods: {
+        init(){
+            this.fetchData();
+        },
+        handleDebugger(data){
+            console.log(data);
+        },
+        fetchData(){
+          let self = this;
+          let urlApi = this.settings.ListApi;
+          let requestData = {
+            method: 'post',
+            url: urlApi,
+            data: {
+              per_page: this.perPage,
+              page: this.currentPage,
+              filter: {}
+            },
+
+          };
+          if (this.modelSearch.CFAccountType !== null) {
+            requestData.data.CFAccountType = this.modelSearch.CFAccountType;
+          }
+          if (this.modelSearch.CoaTypeName  !== '') {
+            requestData.data.CoaTypeName  = this.modelSearch.CoaTypeName ;
+          }
+          if (this.modelSearch.FromAccountNo !== '') {
+            requestData.data.FromAccountNo = this.modelSearch.FromAccountNo  ;
+          }
+          if (this.modelSearch.ToAccountNo !== '') {
+            requestData.data.ToAccountNo = this.modelSearch.ToAccountNo;
+          }
+          if (this.modelSearch.Description !== '') {
+            requestData.data.Description = this.modelSearch.Description;
+          }
+          if (this.stage.filterInactive !== 2) {
+            requestData.data.Inactive = this.stage.filterInactive;
+          }
+          // if (this.modelSearch.Inactive !== '') {
+          //   requestData.data.Inactive = this.modelSearch.Inactive;
+          // }
+          if (this.fullTextSearch !== '') {
+            requestData.data.fullTextSearch = this.fullTextSearch;
+          }
+
+          this.$store.commit('isLoading', true);
+          ApiService.customRequest(requestData).then((response) => {
+            let dataResponse = response.data; //console.log(response.data);
+            if (dataResponse.status === 1) {
+              self.totalRows = dataResponse.data.total;
+              self.perPage = String(dataResponse.data.per_page);
+              self.currentPage = dataResponse.data.current_page;
+              // converse object to array
+              self.itemsArray = _.toArray(dataResponse.data.data);
+              self.CFAccountTypeOption = dataResponse.CFAccountTypeOption;
+              self.CFAccountTypeSearchOption = [{value: null, text: '--Chọn--'}];
+              _.forEach(dataResponse.CFAccountTypeOption, function(value, key){
+                let tmpObj = {};
+                tmpObj.value = key;
+                tmpObj.text = value;
+                self.CFAccountTypeSearchOption.push(tmpObj);
+              })
+
+              // set params request
+              self.paramsReqRouter.lastPage = dataResponse.data.last_page;
+              self.paramsReqRouter.from = dataResponse.data.from;
+              self.paramsReqRouter.to = dataResponse.data.to;
+              self.$_lists_setParamsReqRouter();
+            }
+            self.$store.commit('isLoading', false);
+          }, (error) => {
+            console.log(error);
+            self.$store.commit('isLoading', false);
+          });
+
+          // scroll to top perfect scroll
+          const container = document.querySelector('.b-table-sticky-header');
+          if (container) container.scrollTop = 0;
+
+        },
+        onRowClicked(item){
+            this.$router.push({
+                name: this.settings.ViewRouter,
+                params: {id: item[this.settings.FieldID], req: this.paramsReqRouter}
+            });
+        },
+        onToggleSelectAllRows(value){
+            let self = this;
+            if (value) {
+                _.forEach(this.itemsArray, function (item, key) {
+                    self.$set(self.itemsArray[key], 'rowSelected', true)
+                });
+            } else {
+                _.forEach(this.itemsArray, function (item, key) {
+                    self.$set(self.itemsArray[key], 'rowSelected', false)
+                });
+            }
+        },
+        onChangeTaskType(value){
+          // loại công việc khác
+          if (Number(value) === 9) {
+            this.$bvModal.show('myModalSearchTcatelist');
+          }
+        },
+        onToggleChildren(item, key){
+          let allChildTask = this.getAllChildTask(item, this.itemsArray);
+          let self = this;
+          let $icon = $('.task-icon-' + item.TaskID + ' i');
+          if ($icon.hasClass('fa-folder-o')) {
+            // $('[data-parent-id=' + item.TaskID + ']').show();
+            _.forEach(allChildTask, function (task, key) {
+              let _index = _.findIndex(self.itemsArray, ['TaskID', task.TaskID]);
+              if (_index >= 0) {
+                self.$set(self.itemsArray[_index], 'hidden', false);
+              }
+            });
+            $('.task-icon-' + item.TaskID + ' i').removeClass('fa-folder-o').addClass('fa-folder-open-o');
+          } else {
+            // $('[data-parent-id=' + item.TaskID + ']').hide();
+            _.forEach(allChildTask, function (task, key) {
+                let _index = _.findIndex(self.itemsArray, ['TaskID', task.TaskID]);
+                if (_index >= 0) {
+                    self.$set(self.itemsArray[_index], 'hidden', true);
+                }
+            });
+            $('.task-icon-' + item.TaskID + ' i').removeClass('fa-folder-open-o').addClass('fa-folder-o');
+          }
+
+        },
+        haveChildren(item){
+          let children = _.filter(this.itemsArray, ['ParentID', item.TaskID]);
+          if (children.length > 0) {
+            return true;
+          }
+          return false;
+        },
+        onToggleRowSelected(event, item, key){
+            let indexRow = _.findIndex(this.selectedRows, ['TaskID', item.TaskID]);
+            if (event && (indexRow < 0)) {
+                this.selectedRows.push(item);
+            } else {
+                this.selectedRows.splice(indexRow, 1);
+            }
+            this.$_lists_onRowSelected(this.selectedRows);
+        },
+        handleExportExcel() {
+            // Todo: handle export excel
+            alert('excel');
+        },
+        handleExportPrint() {
+          // Todo: handle export print
+          let request = {};
+          if (this.modelSearch.CoaTypeName  !== '') {
+            request.CoaTypeName  = this.modelSearch.CoaTypeName ;
+          }
+          if (this.modelSearch.Description !== '') {
+            request.Description = this.modelSearch.Description;
+          }
+          if (this.fullTextSearch !== '') {
+            request.fullTextSearch = this.fullTextSearch;
+          }
+          request.exportData = true;
+          this.$router.push({
+            name: 'accounting-actcfaccount-report',
+            query: request
+          });
+        },
+
+        autoCorrectedDatePipe: () => { return createAutoCorrectedDatePipe('dd/mm/yyyy') },
+        scrollHandle(evt){},
+        showModalTcatelist(){
+          this.filter.Type = 9;
+          this.$bvModal.show('myModalSearchTcatelist');
+        },
+        renderDashHtml(level){
+            let dash = '';
+            for (let i = 0; i < level - 1; i++) {
+                dash += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+            }
+            return dash;
+        },
+        sortTableByField(e, field){
+            let ariaSort = $(e.target).attr('aria-sort');
+            switch (ariaSort) {
+                case 'none':
+                    $(e.target).attr('aria-sort', 'ascending');
+                    this.itemsArray = _.orderBy(this.itemsArray, [field], ['asc']);
+                    break;
+                case 'ascending':
+                    $(e.target).attr('aria-sort', 'descending');
+                    this.itemsArray = _.orderBy(this.itemsArray, [field], ['desc']);
+                    break;
+                case 'descending':
+                    $(e.target).attr('aria-sort', 'ascending');
+                    this.itemsArray = _.orderBy(this.itemsArray, [field], ['asc']);
+                    break;
+                default:
+                    break;
+
+
+            }
+        },
+        onClickWorkflow(){
+          this.$router.push({
+            name: 'task-dataflow'
+          });
+        }
+      },
+      directives: {
+          ClickOutside
+      },
+      watch: {
+        currentPage() {
+            this.fetchData();
+        },
+        'filter.Type'(){
+          if (this.filter.Type !== 9) this.$_lists_handleSubmitSearch();
+        },
+
+        // 'filter.PercentCompleted.operator'(newValue, oldValue){
+        //   if (oldValue) {
+        //     if (this.filter.PercentCompleted.number != '') {
+        //       this.$_lists_handleSubmitSearch();
+        //     }
+        //   }
+        // },
+        // 'filter.Company':{
+        //   handler(val){
+        //     // do stuff
+        //     this.$_lists_handleSubmitSearch();
+        //   },
+        //   deep: true
+        // },
+        // 'filter.Doc':{
+        //   handler(val){
+        //     // do stuff
+        //     this.$_lists_handleSubmitSearch();
+        //   },
+        //   deep: true
+        // },
+        // 'filter.TaskLink': {
+        //   handler(val){
+        //     // do stuff
+        //   },
+        //   deep: true
+        // },
+        // 'filter.DateRange.fromDate'(){
+        //   this.$_lists_handleSubmitSearch();
+        // },
+        // 'filter.DateRange.toDate'(){
+        //   this.$_lists_handleSubmitSearch();
+        // },
+
+        'filter.CreateEmployeeID'(){
+          if (this.filter.CreateEmployeeID) {
+            this.filter.ImplementEmployeeID = null;
+            this.filter.AssignEmployeeID = null;
+            this.filter.ReceiveEmployeeID = null;
+            this.filter.ResponEmployeeID = null;
+          }
+        },
+        'filter.AssignEmployeeID'(){
+          if (this.filter.AssignEmployeeID) {
+            this.filter.ImplementEmployeeID = null;
+            this.filter.CreateEmployeeID = null;
+            this.filter.ReceiveEmployeeID = null;
+            this.filter.ResponEmployeeID = null;
+          }
+        },
+        'filter.ReceiveEmployeeID'(){
+          if (this.filter.ReceiveEmployeeID) {
+            this.filter.ImplementEmployeeID = null;
+            this.filter.AssignEmployeeID = null;
+            this.filter.CreateEmployeeID = null;
+            this.filter.ResponEmployeeID = null;
+          }
+        },
+        'filter.ResponEmployeeID'(){
+          if (this.filter.ResponEmployeeID) {
+            this.filter.ImplementEmployeeID = null;
+            this.filter.AssignEmployeeID = null;
+            this.filter.ReceiveEmployeeID = null;
+            this.filter.CreateEmployeeID = null;
+          }
+        },
+        'filter.ImplementEmployeeID'(){
+          if (this.filter.ImplementEmployeeID) {
+            this.filter.CreateEmployeeID = null;
+            this.filter.AssignEmployeeID = null;
+            this.filter.ReceiveEmployeeID = null;
+            this.filter.ResponEmployeeID = null;
+          }
+          this.$_lists_handleSubmitSearch();
+        },
+        // 'filter.TaskCateList'(){
+        // },
+        'stage.viewType'(){
+          this.fetchData();
+          this.$store.commit('optionBehavior', {'viewType': this.stage.viewType});
+        }
+      },
+      beforeDestroy() {
+        $(document).unbind("keypress");
+      }
+    }
+</script>
+
+<style lang="css">
+  .main-footer-pagination ul {
+      margin-bottom: 0;
+  }
+  select.custom-select{
+    background-color: #fff;
+  }
+</style>

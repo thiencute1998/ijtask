@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toastr.vue renders correctly 1`] = `
+<div
+  class="animated fadeIn"
+>
+  <b-card-stub
+    bodytag="div"
+    footertag="div"
+    headertag="div"
+    show-footer=""
+    subtitle=""
+    subtitletag="h6"
+    subtitletextvariant="muted"
+    tag="div"
+    title=""
+    titletag="h4"
+  >
+    <div
+      slot="header"
+    >
+      <i
+        class="icon-info"
+      />
+       Toastr
+      
+      <a
+        class="badge badge-danger ml-1"
+        href="https://coreui.io/pro/vue/"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        CoreUI Pro
+      </a>
+       
+      <div
+        class="card-header-actions"
+      >
+        <a
+          class="card-header-action"
+          href="https://github.com/se-panfilov/vue-notifications"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          <small
+            class="text-muted"
+          >
+            docs
+          </small>
+        </a>
+      </div>
+    </div>
+     
+    <b-button-stub
+      class="mr-1"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      type="button"
+      variant="success"
+    >
+      Success
+    </b-button-stub>
+     
+    <b-button-stub
+      class="mr-1"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      type="button"
+      variant="info"
+    >
+      Info
+    </b-button-stub>
+     
+    <b-button-stub
+      class="mr-1"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      type="button"
+      variant="warning"
+    >
+      Warning
+    </b-button-stub>
+     
+    <b-button-stub
+      class="mr-1"
+      event="click"
+      routertag="a"
+      tag="button"
+      target="_self"
+      type="button"
+      variant="danger"
+    >
+      Error
+    </b-button-stub>
+  </b-card-stub>
+</div>
+`;

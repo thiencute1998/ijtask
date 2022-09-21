@@ -1,0 +1,47 @@
+.app-disable {
+  pointer-events: none;
+  opacity: .6 !important;
+}
+
+header.app-header {
+  height: 50px;
+  flex: 0 0 50px;
+  .navbar-brand {
+    height: 50px;
+  }
+}
+main.main {
+  > div{
+    height: 100%;
+  }
+  height: calc(100vh - 50px);
+  .main-entry {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .main-body {
+    overflow: auto;
+    flex: 1 1 auto;
+  }
+
+}
+@include media-breakpoint-down(lg) {
+  .header-fixed .app-body {
+    margin-top: 50px !important;
+  }
+  .app-body {
+    margin-top: 50px !important;
+  }
+}
+
+@include media-breakpoint-up(lg){
+  .header-fixed .app-body {
+    margin-top: 50px;
+  }
+  .sidebar-fixed .app-header + .app-body .sidebar {
+    height: calc(100vh - 50px);
+  }
+}

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable.vue renders correctly 1`] = `
+<div
+  classname="animated"
+>
+  <b-card-stub
+    bodytag="div"
+    footertag="div"
+    headertag="div"
+    subtitle=""
+    subtitletag="h6"
+    subtitletextvariant="muted"
+    tag="div"
+    title=""
+    titletag="h4"
+  >
+    <b-card-header-stub
+      headertag="div"
+    >
+      <i
+        class="icon-menu mr-1"
+      />
+      Data Table
+      
+      <a
+        class="badge badge-danger"
+        href="https://coreui.io/pro/vue/"
+      >
+        CoreUI Pro
+      </a>
+       
+      <div
+        class="card-header-actions"
+      >
+        <a
+          classname="card-header-action"
+          href="https://github.com/matfish2/vue-tables-2"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <small
+            classname="text-muted"
+          >
+            docs
+          </small>
+        </a>
+      </div>
+    </b-card-header-stub>
+     
+    <b-card-body-stub
+      bodytag="div"
+      subtitle=""
+      subtitletag="h6"
+      subtitletextvariant="muted"
+      title=""
+      titletag="h4"
+    >
+      <v-client-table-stub
+        columns="name,code,uri"
+        data="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+        id="dataTable"
+        options="[object Object]"
+        theme="bootstrap4"
+      />
+    </b-card-body-stub>
+  </b-card-stub>
+</div>
+`;

@@ -1,0 +1,7 @@
+//======================================== operating ===============================================
+@include media-breakpoint-between(md,lg) {
+  .component-dashboard-module-task .task-statistic .card {
+    flex: 1 0 20%;
+  }
+}
+

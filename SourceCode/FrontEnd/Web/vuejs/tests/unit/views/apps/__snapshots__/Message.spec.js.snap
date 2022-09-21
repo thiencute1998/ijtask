@@ -1,0 +1,550 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message.vue renders correctly 1`] = `
+<div
+  class="animated fadeIn"
+>
+  <div
+    class="email-app mb-4"
+  >
+    <nav>
+      <router-link-stub
+        class="btn btn-danger btn-block"
+        event="click"
+        tag="a"
+        to="./compose"
+      >
+        New Email
+      </router-link-stub>
+       
+      <ul
+        class="nav"
+      >
+        <li
+          class="nav-item"
+        >
+          <router-link-stub
+            class="nav-link"
+            event="click"
+            tag="a"
+            to="./inbox"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Inbox 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+              4
+            </b-badge-stub>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-star"
+            />
+             Stared
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-rocket"
+            />
+             Sent
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-trash-o"
+            />
+             Trash
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-bookmark"
+            />
+             Important
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+              5
+            </b-badge-stub>
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Spam 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="warning"
+            >
+              42
+            </b-badge-stub>
+          </a>
+        </li>
+      </ul>
+    </nav>
+     
+    <main
+      class="message"
+    >
+      <div
+        class="toolbar"
+      >
+        <div
+          class="btn-group mr-1"
+        >
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-star"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-star-o"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-bookmark-o"
+            />
+          </b-button-stub>
+        </div>
+         
+        <div
+          class="btn-group mr-1"
+        >
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-reply"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-reply-all"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-forward"
+            />
+          </b-button-stub>
+        </div>
+         
+        <b-button-stub
+          event="click"
+          routertag="a"
+          tag="button"
+          target="_self"
+          type="button"
+          variant="light"
+        >
+          <span
+            class="fa fa-trash-o"
+          />
+        </b-button-stub>
+         
+        <b-dropdown-stub
+          boundary="scrollParent"
+          class="ml-1"
+          offset="0"
+          role="menu"
+          text=""
+          toggletag="button"
+          toggletext="Toggle Dropdown"
+          variant="light"
+        >
+          <template>
+            <span
+              class="fa fa-tags"
+            />
+          </template>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+               Home
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+               Job
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="success"
+            >
+               Clients
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="warning"
+            >
+               News
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+        </b-dropdown-stub>
+      </div>
+       
+      <div
+        class="details"
+      >
+        <div
+          class="title"
+        >
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+        </div>
+         
+        <div
+          class="header"
+        >
+          <img
+            class="avatar"
+            src="img/avatars/7.jpg"
+          />
+           
+          <div
+            class="from"
+          >
+            <span>
+              Lukasz Holeczek
+            </span>
+            
+            lukasz@bootstrapmaster.com
+          
+          </div>
+           
+          <div
+            class="date"
+          >
+            Today, 
+            <b>
+              3:47 PM
+            </b>
+          </div>
+        </div>
+         
+        <div
+          class="content"
+        >
+          <p>
+            
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          
+          </p>
+           
+          <blockquote>
+            
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          
+          </blockquote>
+        </div>
+         
+        <div
+          class="attachments"
+        >
+          <div
+            class="attachment"
+          >
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+              zip
+            </b-badge-stub>
+             
+            <b>
+              bootstrap.zip
+            </b>
+             
+            <i>
+              (2,5MB)
+            </i>
+             
+            <span
+              class="menu"
+            >
+              <a
+                class="fa fa-search"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-share"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-cloud-download"
+                href="#"
+              />
+            </span>
+          </div>
+           
+          <div
+            class="attachment"
+          >
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+              txt
+            </b-badge-stub>
+             
+            <b>
+              readme.txt
+            </b>
+             
+            <i>
+              (7KB)
+            </i>
+             
+            <span
+              class="menu"
+            >
+              <a
+                class="fa fa-search"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-share"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-cloud-download"
+                href="#"
+              />
+            </span>
+          </div>
+           
+          <div
+            class="attachment"
+          >
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="success"
+            >
+              xls
+            </b-badge-stub>
+             
+            <b>
+              spreadsheet.xls
+            </b>
+             
+            <i>
+              (984KB)
+            </i>
+             
+            <span
+              class="menu"
+            >
+              <a
+                class="fa fa-search"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-share"
+                href="#"
+              />
+               
+              <a
+                class="fa fa-cloud-download"
+                href="#"
+              />
+            </span>
+          </div>
+        </div>
+         
+        <form
+          action=""
+          method="post"
+        >
+          <div
+            class="form-group"
+          >
+            <textarea
+              class="form-control"
+              id="message"
+              name="body"
+              placeholder="Click here to reply"
+              rows="12"
+            />
+          </div>
+           
+          <div
+            class="form-group"
+          >
+            <b-button-stub
+              event="click"
+              routertag="a"
+              tabindex="3"
+              tag="button"
+              target="_self"
+              type="submit"
+              variant="success"
+            >
+              Send message
+            </b-button-stub>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+`;

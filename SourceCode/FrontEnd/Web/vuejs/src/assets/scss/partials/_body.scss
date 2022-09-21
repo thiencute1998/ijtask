@@ -1,0 +1,54 @@
+.table .thead-light th {
+  background-color: $gray-100;
+}
+.main-body {
+  background: #f9f9f9;
+}
+.main-body-view-action {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .card{
+    //border-radius: 0;
+    margin-bottom: 0;
+  }
+}
+.main-body-view-list {
+  div{
+    height: 100%;
+  }
+  .b-table-sticky-header {
+    position: relative;
+    margin: 0;
+    max-height: none;
+  }
+  .table {
+    th {
+      border: none;
+    }
+
+    thead{
+      &.rowgroup {
+        tr{
+          height: 30px;
+        }
+      }
+    }
+
+    tbody{
+      tr.b-table-top-row {
+        td{
+          position: sticky;
+          top: 29px;
+          z-index: 2;
+          background-color: $gray-100;
+          border-top: none;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .card{
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+}

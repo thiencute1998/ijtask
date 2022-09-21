@@ -1,0 +1,30 @@
+.icon-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon-item {
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    //color: $gray-500;
+    opacity: .5;
+    &:hover{
+      //color: $blue;
+      opacity: 1;
+    }
+  }
+}
+
+.ij-icon-popup {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.ij-a-icon {
+
+}
+.ij-icon {
+  font-size: 18px;
+  padding-left: 10px;
+  cursor: pointer;
+}

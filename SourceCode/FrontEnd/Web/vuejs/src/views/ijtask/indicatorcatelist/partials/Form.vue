@@ -1,0 +1,525 @@
+<template>
+    <div class="main-entry">
+        <div class="main-header">
+            <div class="main-header-padding">
+                <b-row class="mb-2">
+                    <b-col class="col-md-18">
+                        <div class="main-header-item main-header-name">
+                            <span v-if="idParams"><i class="fa fa-edit mr-2"></i> Loại chỉ tiêu<span v-if="model.CateName ">:</span> {{model.CateName }}</span>
+                            <span v-if="!idParams"><i class="fa fa-plus mr-2"></i> Loại chỉ tiêu<span v-if="model.CateName ">:</span> {{model.CateName }}</span>
+                        </div>
+                    </b-col>
+                    <b-col class="col-md-6"></b-col>
+                </b-row>
+                <b-row>
+                    <b-col class="col-md-12">
+                        <div class="main-header-item main-header-actions">
+                            <b-button type="submit" variant="primary" class="main-header-action mr-2" @click="handleSubmitForm"><i class="fa fa-check-square-o"></i> Lưu</b-button>
+                            <b-button type="reset" variant="primary" class="main-header-action mr-2" @click="onBackToList"><i class="fa fa-ban"></i> Hủy</b-button>
+                        </div>
+                    </b-col>
+                    <b-col class="col-md-12">
+                        <div class="main-header-item main-header-icons">
+                            <div class="main-header-collapse">
+                                <sidebar-toggle class="d-md-down-none btn btn-sm" display="lg" :defaultOpen=true />
+                            </div>
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+
+        </div>
+        <div class="main-body main-body-view-action">
+            <vue-perfect-scrollbar class="scroll-area" :settings="$store.state.psSettings">
+                <div class="container-fluid">
+                    <b-card>
+
+                        <div class="form-group row align-items-center">
+                            <label class="col-md-4 m-0" for="CateName ">Tên loại chỉ tiêu</label>
+                            <div class="col-md-20">
+                                <input v-model="model.CateName " type="text" id="CateName " class="form-control" placeholder="Tên loại chỉ tiêu" name="CateName "/>
+                            </div>
+                        </div>
+
+                        <label>Giá trị loại chỉ tiêu:</label>
+                        <table class="table b-table table-sm table-bordered table-editable">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 30%; border-bottom: none;" class="text-center">Tên</th>
+                                <th scope="col" style="width: 10%; border-bottom: none;" class="text-center">kiểu dữ liệu</th>
+                                <th scope="col" style="width: 10%; border-bottom: none;" class="text-center">Giá trị</th>
+                                <th scope="col" style="width: 10%; border-bottom: none;" class="text-center">Giá trị qui đổi</th>
+                                <th scope="col" style="width: 3%; border-bottom: none;" class="text-center"><!--<i @click="onAddFieldOnTable" class="fa fa-plus" style="cursor: pointer; font-size: 16px; padding: 0 5px"></i>--></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(field, key) in model.IndicatorCateValue">
+                                <td>
+                                    <b-form-input
+                                            type="text"
+                                            v-model="model.IndicatorCateValue[key].Description"
+                                            autocomplete="Indicator code list description">
+                                    </b-form-input>
+                                </td>
+                                <td>
+                                    <b-form-select :options="dataTypeOption" @change="onChangeDataType($event, field)" v-model="model.IndicatorCateValue[key].DataType"></b-form-select>
+                                </td>
+                                <td>
+                                    <b-form-input class="text-right"
+                                            v-if="field.DataType == 1"
+                                            type="number"
+                                            v-model="model.IndicatorCateValue[key].CateValue"
+                                            autocomplete="Indicator code list description">
+                                    </b-form-input>
+                                    <b-form-input
+                                            v-if="field.DataType == 2"
+                                            type="text"
+                                            v-model="model.IndicatorCateValue[key].CateValue"
+                                            autocomplete="Indicator code list description">
+                                    </b-form-input>
+                                    <masked-input
+                                            v-if="field.DataType == 3"
+                                            type="text"
+                                            name="date"
+                                            v-model="model.IndicatorCateValue[key].CateValue + ''"
+                                            class="form-control"
+                                            :mask="[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]"
+                                            :guide="true"
+                                            placeholderChar="_"
+                                            :showMask="true"
+                                            :keepCharPositions="true"
+                                            :pipe="autoCorrectedDatePipe()">
+                                    </masked-input>
+                                    <masked-input
+                                            v-if="field.DataType == 4"
+                                            type="text"
+                                            name="date-time"
+                                            v-model="model.IndicatorCateValue[key].CateValue + ''"
+                                            class="form-control"
+                                            :mask="[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ':', /\d/, /\d/]"
+                                            :guide="true"
+                                            placeholderChar="_"
+                                            :showMask="true"
+                                            :keepCharPositions="true"
+                                            :pipe="autoCorrectedDateTimePipe()">
+                                    </masked-input>
+
+
+                                    <b-form-select v-if="field.DataType == 5" v-model="model.IndicatorCateValue[key].CateValue" :options="[{value: 1, text: 'Có'},{value: 2, text: 'Không'}]"></b-form-select>
+                                    <b-form-select v-if="field.DataType == 6" v-model="model.IndicatorCateValue[key].CateValue" :options="[{value: 1, text: 'Đúng'},{value: 2, text: 'Sai'}]"></b-form-select>
+
+                                </td>
+                              <td>
+                                <b-form-input class="text-right"
+                                  v-if="field.DataType == 1"
+                                  type="number"
+                                  v-model="model.IndicatorCateValue[key].ConvertedValue"
+                                  autocomplete="Indicator code list description">
+                                </b-form-input>
+                                <b-form-input
+                                  v-if="field.DataType == 2"
+                                  type="text"
+                                  v-model="model.IndicatorCateValue[key].ConvertedValue"
+                                  autocomplete="Indicator code list description">
+                                </b-form-input>
+                                <masked-input
+                                  v-if="field.DataType == 3"
+                                  type="text"
+                                  name="date"
+                                  v-model="model.IndicatorCateValue[key].ConvertedValue + ''"
+                                  class="form-control"
+                                  :mask="[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]"
+                                  :guide="true"
+                                  placeholderChar="_"
+                                  :showMask="true"
+                                  :keepCharPositions="true"
+                                  :pipe="autoCorrectedDatePipe()">
+                                </masked-input>
+                                <masked-input
+                                  v-if="field.DataType === 4"
+                                  type="text"
+                                  name="date-time"
+                                  v-model="model.CateValue[key].CateValue + ''"
+                                  class="form-control"
+                                  :mask="[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ':', /\d/, /\d/]"
+                                  :guide="true"
+                                  placeholderChar="_"
+                                  :showMask="true"
+                                  :keepCharPositions="true"
+                                  :pipe="autoCorrectedDateTimePipe()">
+                                </masked-input>
+
+
+                                <b-form-select v-if="field.DataType == 5" v-model="model.IndicatorCateValue[key].ConvertedValue" :options="[{value: 1, text: 'Có'},{value: 2, text: 'Không'}]"></b-form-select>
+                                <b-form-select v-if="field.DataType == 6" v-model="model.IndicatorCateValue[key].ConvertedValue" :options="[{value: 1, text: 'Đúng'},{value: 2, text: 'Sai'}]"></b-form-select>
+
+                              </td>
+                                <td class="text-center">
+                                    <i @click="onDeleteFieldOnTable(field)" class="fa fa-trash-o" title="Xóa" style="font-size: 18px; cursor: pointer"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                      <a @click="onAddFieldOnTable()" class="new-row">
+                        <i aria-hidden="true" class="fa fa-plus-square-o ij-icon ij-icon-plus"></i> Thêm mới
+                      </a>
+                    </b-card>
+                </div>
+            </vue-perfect-scrollbar>
+        </div>
+    </div>
+</template>
+
+<script>
+    import ApiService from '@/services/api.service';
+    import Swal from 'sweetalert2';
+    import 'sweetalert2/src/sweetalert2.scss';
+    import vSelect from 'vue-select';
+    import MaskedInput from 'vue-text-mask';
+    import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
+    import Select2 from 'v-select2-component';
+    import moment from 'moment';
+
+    moment.locale('vi');
+
+
+    const ListRouter = 'task-indicator-cate-list';
+    const EditRouter = 'task-indicator-cate-list-edit';
+    const CreateRouter = 'task-indicator-cate-list-create';
+    const ViewRouter = 'task-indicator-cate-list-view';
+    const DetailApi = 'task/api/indicator-cate-list/view';
+    const EditApi = 'task/api/indicator-cate-list/edit';
+    const CreateApi = 'task/api/indicator-cate-list/create';
+    const StoreApi = 'task/api/indicator-cate-list/store';
+    const UpdateApi = 'task/api/indicator-cate-list/update';
+    const ListApi = 'task/api/indicator-cate-list';
+
+    const dataTypeOption = {
+        1: 'Số',
+        2: 'Kí tự',
+        3: 'Ngày',
+        4: 'Ngày giờ',
+        5: 'Có/Không',
+        6: 'Đúng/Sai'
+    };
+
+    const DataTypeOption = [
+        {value: 1, text: 'Số'},
+        {value: 2, text: 'Kí tự'},
+        {value: 3, text: 'Ngày'},
+        {value: 4, text: 'Ngày giờ'},
+        {value: 5, text: 'Có/Không'},
+        {value: 6, text: 'Đúng/Sai'}
+    ];
+
+    export default {
+        name: 'task-ccatelist-detail',
+        data () {
+            return {
+                idParams: this.idParamsProps,
+                reqParams: this.reqParamsProps,
+                model: {
+                    CateName : '',
+                    CateValue: [],
+                    ConvertedValue: [],
+                    IndicatorCateValue: [],
+                    maxLineID: 0,
+                },
+                stage: {
+                    updatedData: false
+                },
+            }
+
+        },
+
+        props: {
+            idParamsProps: {
+                type: Number,
+                default: 0
+            },
+            reqParamsProps: {
+                type: Object,
+                default: function () {
+                    return {}
+                }
+            },
+            itemCopy: {
+                type: Object,
+                default: function () {
+                    return {}
+                }
+            }
+        },
+
+        components: {
+            Select2,
+            MaskedInput,
+        },
+        beforeCreate() {},
+        mounted() {
+            this.fetchData();
+        },
+        updated() {
+            this.stage.updatedData = true;
+        },
+        computed: {
+            itemNo(){
+                let index = 0;
+                index = this.reqParams.idsArray.indexOf(this.idParams) + 1 + this.reqParams.perPage * (this.reqParams.currentPage - 1);
+                return index;
+            },
+            dataTypeOption(){
+                return DataTypeOption;
+            }
+        },
+        methods: {
+            handleDebugger(value){
+                alert('aaa');
+            },
+            fetchData() {
+
+                let self = this;
+                let urlApi = CreateApi;
+                let requestData = {
+                    method: 'get',
+                    data: {}
+                };
+                // Api edit user
+                if(this.idParams){
+                    urlApi = EditApi + '/' + this.idParams;
+                    requestData.data.id = this.idParams;
+                }
+                requestData.url = urlApi;
+                this.$store.commit('isLoading', true);
+
+                ApiService.setHeader();
+                ApiService.customRequest(requestData).then((responses) => {
+
+                    let responsesData = responses.data;
+                    // copy item
+                    if (!self.idParams && !_.isEmpty(self.itemCopy)) {
+                        responsesData = self.itemCopy;
+                    }
+                    if (responsesData.status === 1) {
+                      //console.log(responsesData);
+                        if (self.idParams || !_.isEmpty(self.itemCopy)) {
+                            if (_.isObject(responsesData.data.data)) {
+                                self.model.CateName  = responsesData.data.data.CateName ;
+                                self.model.inactive = (responsesData.data.data.Inactive) ? true : false;
+
+                                self.model.IndicatorCateList = responsesData.data.IndicatorCateList;
+                                self.model.IndicatorCateValue = responsesData.data.IndicatorCateValue;
+
+                                // set max lineID
+                                _.forEach(self.model.IndicatorCateValue, function (field, key) {
+                                    if (Number(field.LineID) > self.model.maxLineID) self.model.maxLineID = Number(field.LineID);
+                                    // set type of value
+                                    if (field.DataType == 1) self.model.IndicatorCateValue[key].CateValue = Number(self.model.IndicatorCateValue[key].CateValue);
+                                    if (field.DataType == 2) self.model.IndicatorCateValue[key].CateValue = String(self.model.IndicatorCateValue[key].CateValue);
+                                    if (field.DataType == 3) self.model.IndicatorCateValue[key].CateValue = moment(self.model.IndicatorCateValue[key].CateValue).format('DD/MM/YYYY');
+                                    if (field.DataType == 4) self.model.IndicatorCateValue[key].CateValue = moment(self.model.IndicatorCateValue[key].CateValue).format('DD/MM/YYYY hh:mm');
+                                });
+
+                            }
+                        } else {
+                            if (_.isArray(responsesData.data)) {
+
+                                self.model.IndicatorCodeListOption = [];
+                                _.forEach(responsesData.data, function (value, key) {
+                                    let tmpObj = {};
+                                    tmpObj.id = value.CateID;
+                                    tmpObj.text = value.CateName ;
+                                    self.model.IndicatorCodeListOption.push(tmpObj);
+                                });
+                            }
+                        }
+
+                        if (_.isArray(responsesData.data.IndicatorCodeList)) {
+
+                            self.model.IndicatorCodeListOption = [];
+                            _.forEach(responsesData.data.IndicatorCodeList, function (value, key) {
+                                let tmpObj = {};
+                                tmpObj.id = value.CateID;
+                                tmpObj.text = value.CateName ;
+                                self.model.IndicatorCodeListOption.push(tmpObj);
+                            });
+                        }
+
+
+                    }
+                    // console.log('xxxx');
+                    // console.log(self.model.IndicatorCateValue);
+                    self.$store.commit('isLoading', false);
+                }, (error) => {
+                    console.log(error);
+                    self.$store.commit('isLoading', false);
+                });
+            },
+            onNavigationItem(type) {
+                let currentIndex = this.reqParams.idsArray.indexOf(this.idParams);
+                let newIndex = (type === 'prev') ? currentIndex - 1 : currentIndex + 1;
+
+                if (newIndex === (this.reqParams.idsArray.length) && (this.reqParams.currentPage != this.reqParams.lastPage)) {
+                    this.reqParams.currentPage = this.reqParams.currentPage + 1;
+                    this.getItemIds(type);
+                } else if (newIndex < 0 && this.reqParams.currentPage > 1){
+                    this.reqParams.currentPage = this.reqParams.currentPage - 1;
+                    this.getItemIds(type);
+                }
+                else {
+                    this.idParams = (this.reqParams.idsArray[newIndex]) ? this.reqParams.idsArray[newIndex] : this.idParams;
+                }
+            },
+            getItemIds(type){
+                let self = this;
+                let requestData = {
+                    method: 'post',
+                    url: ListApi,
+                    data: {
+                        per_page: this.reqParams.perPage,
+                        page: this.reqParams.currentPage,
+                        type: 'only-id'
+                    }
+                };
+
+                if (this.reqParams.search.CateName  !== '') {
+                    requestData.data.CateName  = this.reqParams.search.CateName ;
+                }
+
+                this.$store.commit('isLoading', true);
+                ApiService.customRequest(requestData).then((response) => {
+                    let dataResponse = response.data;
+                    if (dataResponse.status === 1) {
+                        self.reqParams.total = dataResponse.data.total;
+                        self.reqParams.perPage = String(dataResponse.data.per_page);
+                        self.reqParams.currentPage = dataResponse.data.current_page;
+
+                        this.reqParams.idsArray = [];
+                        _.forEach(dataResponse.data.data, function (value, key) {
+                            self.reqParams.idsArray.push(value.CateID);
+                        });
+
+                        (type == 'prev') ? self.idParams = self.reqParams.idsArray[self.reqParams.idsArray.length - 1] : self.idParams = self.reqParams.idsArray[0];
+                    }
+                    self.$store.commit('isLoading', false);
+                }, (error) => {
+                    console.log(error);
+                    self.$store.commit('isLoading', false);
+                });
+
+            },
+            onChangeDataType(value, field){
+                if (value === 1) {field.CateValue = 0; field.ConvertedValue = 0;}
+                if (value === 2) {field.CateValue = ''; field.ConvertedValue = '';}
+                if (value === 3) {field.CateValue = moment().format('DD/MM/YYYY'); field.ConvertedValue = moment().format('DD/MM/YYYY');}
+                if (value === 4) {field.CateValue = moment().format('DD/MM/YYYY hh:mm'); field.ConvertedValue = moment().format('DD/MM/YYYY hh:mm');}
+                if (value === 5 || value === 6) {field.CateValue = 1; field.ConvertedValue = 1;}
+                this.$forceUpdate();
+            },
+            onAddFieldOnTable(){
+                let fieldObj = {};
+                this.model.maxLineID += 1;
+                fieldObj.LineID = this.model.maxLineID;
+                fieldObj.DataType = 1;
+                fieldObj.CateValue = null;
+                fieldObj.ConvertedValue  = null;
+                fieldObj.Description = '';
+                fieldObj.NOrder = null;
+                this.model.IndicatorCateValue.push(fieldObj);
+                this.$forceUpdate();
+            },
+            onDeleteFieldOnTable(field){
+
+                // remove field in fieldOnTableReq
+                let fieldExist = _.find(this.model.IndicatorCateValue, ['LineID', field.LineID]);
+                if (_.isObject(fieldExist)) {
+                    _.remove(this.model.IndicatorCateValue, ['LineID', field.LineID]);
+                }
+                this.$forceUpdate();
+            },
+            handleSubmitForm(){
+                let self = this;
+                const requestData = {
+                    method: 'post',
+                    url: StoreApi,
+                    data: {
+                        master: {
+                            CateName : this.model.CateName ,
+                            Inactive: (this.model.inactive) ? 1 : 0,
+                        },
+                        detail: this.model.IndicatorCateValue
+                    }
+                };
+
+                // edit user
+                if (this.idParams) {
+                    requestData.data.master.CateID = this.idParams;
+                    requestData.url = UpdateApi + '/' + this.idParams;
+                }
+
+                this.$store.commit('isLoading', true);
+                ApiService.setHeader();
+                ApiService.customRequest(requestData).then((responses) => {
+                    let responsesData = responses.data;
+                    if (responsesData.status === 1) {
+                      if (!self.idParams && responsesData.data) self.idParams = responsesData.data;
+                      self.$router.push({
+                        name: ViewRouter,
+                        params: {id: self.idParams, message: 'Bản ghi đã được cập nhật!'}
+                      });
+                    } else {
+                        let htmlErrors = __.renderErrorApiHtml(responsesData.data);
+                        Swal.fire(
+                            'Thông báo',
+                            htmlErrors,
+                            'error'
+                        )
+                    }
+
+                    self.$store.commit('isLoading', false);
+                }, (error) => {
+                    console.log(error);
+                    Swal.fire(
+                        'Thông báo',
+                        'Không kết nối được với máy chủ',
+                        'error'
+                    );
+                    self.$store.commit('isLoading', false);
+                });
+            },
+            onEditClicked(){
+                this.$router.push({
+                    name: EditRouter,
+                    params: {id: this.idParams, req: this.reqParams}
+                });
+            },
+            onCreateClicked(){
+                this.$router.push({name: CreateRouter});
+            },
+            onBackToList() {
+                this.$router.push({name: ListRouter});
+            },
+            updateModel() {
+                if (this.stage.updatedData) {
+                    this.$forceUpdate();
+                }
+            },
+            autoCorrectedDatePipe: () => { return createAutoCorrectedDatePipe('dd/mm/yyyy') },
+            autoCorrectedDateTimePipe: () => {return createAutoCorrectedDatePipe('dd/mm/yyyy hh:mm')},
+        },
+        watch: {
+            idParams() {
+                this.fetchData();
+            },
+        }
+    }
+</script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style lang="css">
+    .v-select .dropdown-menu {
+        max-height: 170px !important;
+    }
+    .custom-align {
+        flex: 0 0 12.3%;
+    }
+</style>

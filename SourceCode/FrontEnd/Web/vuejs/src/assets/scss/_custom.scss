@@ -1,0 +1,796 @@
+// Here you can add other styles
+*:focus, *:hover {
+  outline: none;
+}
+
+.app-body .main {
+  -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+}
+
+.scroll-auto {
+  -webkit-overflow-scrolling: auto; /* Stops scrolling immediately */
+}
+
+.sidebar .nav-dropdown.open > .nav-dropdown-items {
+  max-height: 10000px;
+}
+.gcv-menu {
+  height: auto !important;
+}
+
+.ijcore-modal-data .list-group-item {
+  padding: 0.25rem 0.75rem;
+}
+header {
+  .app-header {
+    background: #e4e7ea;
+  }
+}
+.app-header .navbar-nav .dropdown-menu-right {
+  z-index: 9999;
+}
+.sidebar .nav-dropdown.open {
+  background: rgba(0, 162, 232, 0.2);
+}
+.sidebar .nav-dropdown.open .nav-dropdown-toggle{
+  background: rgba(0, 162, 232, 0.4);
+}
+.text-bold {
+  font-weight: bold !important;
+}
+.app-not-allowed {
+  //pointer-events: none;
+  cursor: not-allowed;
+}
+.no-overflow{
+  overflow: unset !important;
+}
+.content-table .table {
+  margin: 0;
+}
+
+.app-header .navbar-brand {
+  width: 200px;
+  padding: 0 20px;
+  justify-content: flex-start;
+}
+@media screen and (max-width: 575px){
+  .app-header .navbar-brand {
+    width: 150px;
+  }
+}
+
+.main .container-fluid {
+  padding: 0 15px;
+}
+
+.form-group-checkbox-center .col{
+  display: flex;
+  align-items: center;
+}
+.navbar-toggler {
+  border: 1px solid #c8ced3;
+  padding: 0.275rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.img-avatar {
+  object-fit: cover;
+}
+
+// =================================== custom color and sidebar ========================================
+
+.sidebar {
+  background: #e9ebec;
+  color: #34383c;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar .nav-link {
+  color: #34383c;
+}
+.sidebar .nav-dropdown.open .nav-link {
+  color: #34383c;
+}
+.sidebar .nav-link:hover {
+  color: #34383c;
+  //background: #dbdee0;
+  background: rgba(0,162,232,.2);
+}
+.sidebar .nav-link .nav-icon {
+  color: #9fabb8;
+}
+
+.sidebar .nav-link.active {
+  color: #34383c;
+  //background: #dbdfe0;
+  //background: #bbbcbd;
+  background: rgba(0,162,232,.2);
+}
+
+.sidebar .nav-link:hover .nav-icon, .sidebar .nav-link.active .nav-icon {
+  color: #34383c;
+}
+
+.sidebar .nav-link:hover.nav-dropdown-toggle::before {
+background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3Cpath fill='%2373818f' d='M9.148 2.352l-4.148 4.148 4.148 4.148q0.148 0.148 0.148 0.352t-0.148 0.352l-1.297 1.297q-0.148 0.148-0.352 0.148t-0.352-0.148l-5.797-5.797q-0.148-0.148-0.148-0.352t0.148-0.352l5.797-5.797q0.148-0.148 0.352-0.148t0.352 0.148l1.297 1.297q0.148 0.148 0.148 0.352t-0.148 0.352z'/%3E%3C/svg%3E")
+}
+
+header.app-header .navbar-brand {
+  background: $primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  span {
+    color: #fff;
+  }
+}
+body {
+  background: #f3f3f3;
+}
+header.app-header {
+  background: #e9ebec;
+  //border-bottom: 1px solid #dbdfe0;
+  border-bottom: 1px solid #ccc;
+}
+
+.table.b-table > tbody > .table-active, .table.b-table > tbody > .table-active > th, .table.b-table > tbody > .table-active > td {
+  background-color: rgba(0, 162, 232, .1);
+}
+
+.b-table-sticky-custom table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.b-table-sticky-custom .table th, .b-table-sticky-custom .table td {
+  border: 0;
+  border-right: 1px solid #c8ced3;
+  border-bottom: 1px solid #c8ced3;
+}
+//.b-table-sticky-custom .table th:first-child, .b-table-sticky-custom .table td:first-child{
+//  border-left: 1px solid #c8ced3;
+//}
+.b-table-sticky-custom .table .b-table-sticky-column, .b-table-sticky-custom .table .b-table-sticky-column-right {
+  border-left: 1px solid #c8ced3;
+  z-index: 10 !important;
+}
+.b-table-sticky-custom .table {
+  border-left: 1px solid #c8ced3;
+}
+.b-table-sticky-custom .table th {
+  border-top: 1px solid #c8ced3;
+}
+
+.sidebar .sidebar-minimizer, .sidebar .sidebar-minimizer:hover {
+  background-color: $primary;
+}
+.sidebar .sidebar-minimizer::before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3Cpath fill='%23fff' d='M9.148 2.352l-4.148 4.148 4.148 4.148q0.148 0.148 0.148 0.352t-0.148 0.352l-1.297 1.297q-0.148 0.148-0.352 0.148t-0.352-0.148l-5.797-5.797q-0.148-0.148-0.148-0.352t0.148-0.352l5.797-5.797q0.148-0.148 0.352-0.148t0.352 0.148l1.297 1.297q0.148 0.148 0.148 0.352t-0.148 0.352z'/%3E%3C/svg%3E");
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar .sidebar-minimizer {
+  flex: 0 0 40px;
+}
+
+
+@media (min-width: 992px){
+  .sidebar-minimized .sidebar .sidebar-minimizer {
+    //background-color: rgba(0, 0, 0, 0.2);
+    background-color: $primary;
+  }
+
+  .sidebar-minimized .sidebar .nav-item:hover > .nav-link {
+    background: #dbdee0;
+  }
+  .sidebar-minimized .sidebar .nav-item:hover > .nav-link .nav-icon {
+    color: #34383c;
+  }
+  .sidebar-minimized .sidebar .nav-link:hover {
+    background: #dbdee0;
+  }
+  .sidebar-minimized .sidebar .nav > .nav-dropdown > .nav-dropdown-items {
+    background: #e9ebec;
+  }
+  .sidebar-minimized .sidebar .sidebar-minimizer {
+    width: 50px;
+    height: 40px;
+  }
+}
+
+// ========================== end custom color and sidebar =======================================
+
+
+//===================== custom offset bootstrap vue ================================
+.offset-right-12 {
+  margin-right: 100% !important;
+}
+.offset-right-11 {
+  margin-right: 91.66666667% !important;
+}
+.offset-right-10 {
+  margin-right: 83.33333333% !important;
+}
+.offset-right-9 {
+  margin-right: 75% !important;
+}
+.offset-right-8 {
+  margin-right: 66.66666667% !important;
+}
+.offset-right-7 {
+  margin-right: 58.33333333% !important;
+}
+.offset-right-6 {
+  margin-right: 50% !important;
+}
+.offset-right-5 {
+  margin-right: 41.66666667% !important;
+}
+.offset-right-4 {
+  margin-right: 33.33333333% !important;
+}
+.offset-right-3 {
+  margin-right: 25% !important;
+}
+.offset-right-2 {
+  margin-right: 16.66666667% !important;
+}
+.offset-right-1 {
+  margin-right: 8.33333333% !important;
+}
+.offset-right-0 {
+  margin-right: 0 !important;
+}
+@media (min-width: 768px) {
+  .offset-sm-right-12 {
+    margin-right: 100% !important;
+  }
+  .offset-sm-right-11 {
+    margin-right: 91.66666667% !important;
+  }
+  .offset-sm-right-10 {
+    margin-right: 83.33333333% !important;
+  }
+  .offset-sm-right-9 {
+    margin-right: 75% !important;
+  }
+  .offset-sm-right-8 {
+    margin-right: 66.66666667% !important;
+  }
+  .offset-sm-right-7 {
+    margin-right: 58.33333333% !important;
+  }
+  .offset-sm-right-6 {
+    margin-right: 50% !important;
+  }
+  .offset-sm-right-5 {
+    margin-right: 41.66666667% !important;
+  }
+  .offset-sm-right-4 {
+    margin-right: 33.33333333% !important;
+  }
+  .offset-sm-right-3 {
+    margin-right: 25% !important;
+  }
+  .offset-sm-right-2 {
+    margin-right: 16.66666667% !important;
+  }
+  .offset-sm-right-1 {
+    margin-right: 8.33333333% !important;
+  }
+  .offset-sm-right-0 {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 992px) {
+  .offset-md-right-12 {
+    margin-right: 100% !important;
+  }
+  .offset-md-right-11 {
+    margin-right: 91.66666667% !important;
+  }
+  .offset-md-right-10 {
+    margin-right: 83.33333333% !important;
+  }
+  .offset-md-right-9 {
+    margin-right: 75% !important;
+  }
+  .offset-md-right-8 {
+    margin-right: 66.66666667% !important;
+  }
+  .offset-md-right-7 {
+    margin-right: 58.33333333% !important;
+  }
+  .offset-md-right-6 {
+    margin-right: 50% !important;
+  }
+  .offset-md-right-5 {
+    margin-right: 41.66666667% !important;
+  }
+  .offset-md-right-4 {
+    margin-right: 33.33333333% !important;
+  }
+  .offset-md-right-3 {
+    margin-right: 25% !important;
+  }
+  .offset-md-right-2 {
+    margin-right: 16.66666667% !important;
+  }
+  .offset-md-right-1 {
+    margin-right: 8.33333333% !important;
+  }
+  .offset-md-right-0 {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 1200px) {
+  .offset-lg-right-12 {
+    margin-right: 100% !important;
+  }
+  .offset-lg-right-11 {
+    margin-right: 91.66666667% !important;
+  }
+  .offset-lg-right-10 {
+    margin-right: 83.33333333% !important;
+  }
+  .offset-lg-right-9 {
+    margin-right: 75% !important;
+  }
+  .offset-lg-right-8 {
+    margin-right: 66.66666667% !important;
+  }
+  .offset-lg-right-7 {
+    margin-right: 58.33333333% !important;
+  }
+  .offset-lg-right-6 {
+    margin-right: 50% !important;
+  }
+  .offset-lg-right-5 {
+    margin-right: 41.66666667% !important;
+  }
+  .offset-lg-right-4 {
+    margin-right: 33.33333333% !important;
+  }
+  .offset-lg-right-3 {
+    margin-right: 25% !important;
+  }
+  .offset-lg-right-2 {
+    margin-right: 16.66666667% !important;
+  }
+  .offset-lg-right-1 {
+    margin-right: 8.33333333% !important;
+  }
+  .offset-lg-right-0 {
+    margin-right: 0 !important;
+  }
+}
+//===================== custom offset bootstrap vue================================
+
+
+// =============================== table ============================================
+.table.b-table {
+  //table-layout: fixed;
+  td, td div, td span{
+    //max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  td.no-overflow, td.no-overflow div, td.no-overflow span {
+    overflow: unset;
+  }
+  td{
+    max-width: 1px;
+  }
+  &.table-editable {
+    td{
+      max-width: none;
+    }
+  }
+
+  thead th{
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+.table.b-table.table-reset-default {
+  td, td div, td span {
+    overflow: unset;
+    white-space: unset;
+    text-overflow: unset;
+  }
+
+  td{
+    max-width: none;
+  }
+}
+
+
+.table-editable {
+  input, select {
+    border: none;
+    &:focus{
+      box-shadow: none;
+    }
+  }
+  td {
+    padding: 0;
+    vertical-align: middle;
+    &.has-padding {
+      padding-left: .3rem;
+    }
+  }
+  .select2-container {
+    width: 100% !important;
+  }
+  .select2-selection.select2-selection--single {
+    border: none;
+  }
+}
+
+.b-table-sticky-column-right {
+  z-index: 5;
+  position: sticky;
+  right: 0;
+  background: #fff;
+}
+
+.custom-select2-multiple .select2-container{
+  width: 100% !important;
+}
+.custom-select2-multiple .select2-selection__rendered {
+  display: inline-flex !important;
+}
+.custom-select2-multiple .select2-selection__choice {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  max-width: none;
+  overflow: unset;
+}
+.custom-select2-multiple .select2-selection {
+  display: flex !important;
+  align-items: center;
+  border: none !important;
+}
+.custom-select2-multiple .select2-search__field {
+  margin-top: 0 !important;
+}
+.custom-select2-multiple .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  margin-top: 0!important;
+}
+.custom-select2-multiple .select2-container .select2-selection--multiple .select2-selection__rendered {
+  overflow-x: auto;
+}
+
+.table-list-link {
+  display: inline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  background: transparent;
+  color: #34383c;
+}
+.table-list-link:hover {
+  text-decoration: none;
+}
+
+// ================================= end table ==============================
+
+// main header view
+.main-header-views .view-active button,.main-header-views button.view-active{
+  color: #151b1e;
+  background-color: #b3bbc2;
+  border-color: #acb5bc;
+}
+
+// ================================= end table ==============================
+
+// =============================== dropdown menu =============================
+.dropdown-menu {
+  padding: .5rem 0;
+}
+.dropdown-menu .dropdown-item {
+  border-radius: 0;
+}
+
+.app-header .dropdown-menu {
+  padding: 0;
+}
+// =============================== dropdown menu =============================
+
+// ================================= custom placeholder ==============================
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $gray-400 !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $gray-400 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $gray-400 !important;
+}
+
+canvas{
+  outline: none;
+}
+.form-control, .custom-select {
+  color: #151b1e;
+}
+.custom-select {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 2 4 5'%3e%3cpath fill='%232f353a' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+}
+
+.ps__rail-x {
+  max-height: 6px;
+}
+// ================================= custom placeholder ==============================
+
+// ================================= number code ==================================
+.app-object-name {
+  padding-right: 0;
+  @media (max-width: 575px) {
+    padding-right: 15px;
+  }
+}
+.app-object-code {
+  span{
+    white-space: nowrap;
+    padding-right: 15px;
+    @media (max-width: 575px) {
+      padding-right: 30px;
+    }
+  }
+}
+// ================================= number code ==================================
+
+
+// ====================================== custom footer modal ============================
+.modal-footer {
+  justify-content: flex-start;
+}
+.modal-footer > :not(:last-child) {
+  margin-right: 0;
+  margin-left: .25rem;
+}
+.modal-footer > :not(:first-child) {
+  margin-left: 0;
+  margin-right: .25rem;
+}
+
+// ====================================== custom footer modal ============================
+
+// ========================== swal alert ===================================
+.swal2-icon {
+  width: 3em;
+  height: 3em;
+}
+.swal2-icon::before {
+  font-size: 2.75em;
+}
+.swal2-title {
+  font-size: 18px;
+}
+.swal2-content {
+  font-size: 1rem;
+}
+.swal2-styled {
+  padding: 0.275rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  border-radius: 0.25rem !important;
+}
+// ========================== swal alert ===================================
+
+// ========================== main header icon ==============================
+.main-header-icon {
+  .dropdown-toggle {
+    border-radius: 0;
+    border-left: none;
+  }
+}
+#main-header-collapse {
+  button{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+  }
+}
+#dropdown-view-type {
+  button{
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+  }
+}
+// ========================== main header icon ==============================
+
+// ============================= user icon ======================================
+.user-icons {
+  display: flex;
+  align-items: center;
+}
+.user-icon {
+  height: 22px !important;
+  width: 22px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 2px;
+  position: relative;
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &.user-main-response:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00a2e8;
+    opacity: 0.4;
+    border-radius: 50%;
+  }
+}
+
+.user-icons .user-plus {
+  cursor: pointer;
+}
+// ============================= user icon ======================================
+
+//============================= contextmenu ======================================
+.contextmenu a:hover{
+  background: #f0f3f5;
+}
+.v-context>li>a, .v-context ul>li>a {
+  cursor: pointer;
+}
+//============================= contextmenu ======================================
+
+// ======================================= Timeline Examples =========================
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #22c0e8;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+// ======================================= Timeline Examples =========================
+.table-padding-x {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+// ======================================= text nowrap =========================
+.text-nowrap{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ======================================= vue-contextmenu =========================
+.v-context>li>a, .v-context ul>li>a {
+  padding: 0.25rem 0.75rem !important;
+}
+// ================================================================
+
+.select2-selection--multiple{
+  min-height: 30px !important;
+}
+.select2-selection--multiple .select2-search__field{
+  height: 27px !important;
+  margin-top: 0px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  margin-top: 1px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__clear{
+  margin-top: 0px !important;
+  height: 100% !important;
+  position: absolute;
+  right: -5px;
+  top: 0px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-top: 2px !important;
+}
+.select2-container--default .select2-search--inline .select2-search__field{
+  padding-right: 15px !important;
+}
+// =================================== Hide Arrows From Input Number ==============================
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+// =================================== Hide Arrows From Input Number ==============================
+
+// =================================== For avatar ==============================
+.img-block {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+.img-block-group {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+.img-block-group .img-block-item {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+}
+.img-block-group .img-block-item:first-child {
+  right: 0;
+  top: 0;
+}
+.img-block-group .img-block-item:last-child {
+  bottom: 0;
+  left: 0;
+}
+// =================================== For avatar ==============================
+.pr-3{
+  vertical-align: top;
+}
+
+
+//======================== header ================================
+@media screen and (max-width: 991.98px){
+ .app-header .navbar-brand {
+   margin-left: 1rem;
+   position: relative;
+   left: auto;
+   width: auto;
+ }
+}
+@media screen and (max-width: 375px){
+  .app-header .navbar-brand {
+    padding: 0 10px;
+  }
+}

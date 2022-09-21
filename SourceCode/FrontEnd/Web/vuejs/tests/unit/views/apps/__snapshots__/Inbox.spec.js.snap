@@ -1,0 +1,946 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inbox.vue renders correctly 1`] = `
+<div
+  class="animated fadeIn"
+>
+  <div
+    class="email-app mb-4"
+  >
+    <nav>
+      <router-link-stub
+        class="btn btn-danger btn-block"
+        event="click"
+        tag="a"
+        to="./compose"
+      >
+        New Email
+      </router-link-stub>
+       
+      <ul
+        class="nav"
+      >
+        <li
+          class="nav-item"
+        >
+          <router-link-stub
+            class="nav-link"
+            event="click"
+            tag="a"
+            to="./inbox"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Inbox 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+              4
+            </b-badge-stub>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-star"
+            />
+             Stared
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-rocket"
+            />
+             Sent
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-trash-o"
+            />
+             Trash
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-bookmark"
+            />
+             Important
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+              5
+            </b-badge-stub>
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Spam 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="warning"
+            >
+              42
+            </b-badge-stub>
+          </a>
+        </li>
+      </ul>
+    </nav>
+     
+    <main
+      class="inbox"
+    >
+      <div
+        class="toolbar"
+      >
+        <div
+          class="btn-group mr-1"
+        >
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-envelope"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-star"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-star-o"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-bookmark-o"
+            />
+          </b-button-stub>
+        </div>
+         
+        <div
+          class="btn-group mr-1"
+        >
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-reply"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-reply-all"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-mail-forward"
+            />
+          </b-button-stub>
+        </div>
+         
+        <b-button-stub
+          event="click"
+          routertag="a"
+          tag="button"
+          target="_self"
+          type="button"
+          variant="light"
+        >
+          <span
+            class="fa fa-trash-o"
+          />
+        </b-button-stub>
+         
+        <b-dropdown-stub
+          boundary="scrollParent"
+          class="ml-1"
+          offset="0"
+          role="menu"
+          text=""
+          toggletag="button"
+          toggletext="Toggle Dropdown"
+          variant="light"
+        >
+          <template>
+            <span
+              class="fa fa-tags"
+            />
+          </template>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+               Home
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+               Job
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="success"
+            >
+               Clients
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+           
+          <b-dropdown-item-stub
+            event="click"
+            href="#"
+            routertag="a"
+            target="_self"
+          >
+            add label 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="warning"
+            >
+               News
+            </b-badge-stub>
+          </b-dropdown-item-stub>
+        </b-dropdown-stub>
+         
+        <div
+          class="btn-group float-right"
+        >
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-chevron-left"
+            />
+          </b-button-stub>
+           
+          <b-button-stub
+            event="click"
+            routertag="a"
+            tag="button"
+            target="_self"
+            type="button"
+            variant="light"
+          >
+            <span
+              class="fa fa-chevron-right"
+            />
+          </b-button-stub>
+        </div>
+      </div>
+       
+      <ul
+        class="messages"
+      >
+        <li
+          class="message unread"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                <span
+                  class="fa fa-paper-clip"
+                />
+                 Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                <span
+                  class="fa fa-paper-clip"
+                />
+                 Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message unread"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message unread"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="message"
+        >
+          <router-link-stub
+            event="click"
+            tag="a"
+            to="./message"
+          >
+            <div
+              class="actions"
+            >
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-square-o"
+                />
+              </span>
+               
+              <span
+                class="action"
+              >
+                <i
+                  class="fa fa-star-o"
+                />
+              </span>
+            </div>
+             
+            <div
+              class="header"
+            >
+              <span
+                class="from"
+              >
+                Lukasz Holeczek
+              </span>
+               
+              <span
+                class="date"
+              >
+                Today, 3:47 PM
+              </span>
+            </div>
+             
+            <div
+              class="title"
+            >
+              
+              Lorem ipsum dolor sit amet.
+            
+            </div>
+             
+            <div
+              class="description"
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            
+            </div>
+          </router-link-stub>
+        </li>
+      </ul>
+    </main>
+  </div>
+</div>
+`;

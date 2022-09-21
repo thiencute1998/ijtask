@@ -1,0 +1,563 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compose.vue renders correctly 1`] = `
+<div
+  class="animated fadeIn"
+>
+  <div
+    class="email-app"
+  >
+    <nav>
+      <router-link-stub
+        class="btn btn-danger btn-block"
+        event="click"
+        tag="a"
+        to="./compose"
+      >
+        New Email
+      </router-link-stub>
+       
+      <ul
+        class="nav"
+      >
+        <li
+          class="nav-item"
+        >
+          <router-link-stub
+            class="nav-link"
+            event="click"
+            tag="a"
+            to="./inbox"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Inbox 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="danger"
+            >
+              4
+            </b-badge-stub>
+          </router-link-stub>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-star"
+            />
+             Stared
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-rocket"
+            />
+             Sent
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-trash-o"
+            />
+             Trash
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-bookmark"
+            />
+             Important
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="info"
+            >
+              5
+            </b-badge-stub>
+          </a>
+        </li>
+         
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            href="#"
+          >
+            <i
+              class="fa fa-inbox"
+            />
+             Spam 
+            <b-badge-stub
+              event="click"
+              routertag="a"
+              tag="span"
+              target="_self"
+              variant="warning"
+            >
+              42
+            </b-badge-stub>
+          </a>
+        </li>
+      </ul>
+    </nav>
+     
+    <main>
+      <p
+        class="text-center"
+      >
+        New Message
+      </p>
+       
+      <form>
+        <div
+          class="form-row mb-3"
+        >
+          <label
+            class="col-2 col-sm-1 col-form-label"
+            for="to"
+          >
+            To:
+          </label>
+           
+          <b-col-stub
+            cols="12"
+            sm="11"
+            tag="div"
+          >
+            <input
+              class="form-control"
+              id="to"
+              placeholder="Type email"
+              type="email"
+            />
+          </b-col-stub>
+        </div>
+         
+        <div
+          class="form-row mb-3"
+        >
+          <label
+            class="col-2 col-sm-1 col-form-label"
+            for="cc"
+          >
+            CC:
+          </label>
+           
+          <b-col-stub
+            cols="12"
+            sm="11"
+            tag="div"
+          >
+            <input
+              class="form-control"
+              id="cc"
+              placeholder="Type email"
+              type="email"
+            />
+          </b-col-stub>
+        </div>
+         
+        <div
+          class="form-row mb-3"
+        >
+          <label
+            class="col-2 col-sm-1 col-form-label"
+            for="bcc"
+          >
+            BCC:
+          </label>
+           
+          <b-col-stub
+            cols="12"
+            sm="11"
+            tag="div"
+          >
+            <input
+              class="form-control"
+              id="bcc"
+              placeholder="Type email"
+              type="email"
+            />
+          </b-col-stub>
+        </div>
+      </form>
+       
+      <b-row-stub
+        tag="div"
+      >
+        <b-col-stub
+          class="ml-auto"
+          sm="11"
+          tag="div"
+        >
+          <div
+            class="toolbar"
+            role="toolbar"
+          >
+            <div
+              class="btn-group mr-1"
+            >
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-bold"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-italic"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-underline"
+                />
+              </b-button-stub>
+            </div>
+             
+            <div
+              class="btn-group mr-1"
+            >
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-align-left"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-align-right"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-align-center"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-align-justify"
+                />
+              </b-button-stub>
+            </div>
+             
+            <div
+              class="btn-group mr-1"
+            >
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-indent"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-outdent"
+                />
+              </b-button-stub>
+            </div>
+             
+            <div
+              class="btn-group mr-1"
+            >
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-list-ul"
+                />
+              </b-button-stub>
+               
+              <b-button-stub
+                event="click"
+                routertag="a"
+                tag="button"
+                target="_self"
+                type="button"
+                variant="light"
+              >
+                <span
+                  class="fa fa-list-ol"
+                />
+              </b-button-stub>
+            </div>
+             
+            <b-button-stub
+              class="mr-1"
+              event="click"
+              routertag="a"
+              tag="button"
+              target="_self"
+              type="button"
+              variant="light"
+            >
+              <span
+                class="fa fa-trash-o"
+              />
+            </b-button-stub>
+             
+            <b-button-stub
+              event="click"
+              routertag="a"
+              tag="button"
+              target="_self"
+              type="button"
+              variant="light"
+            >
+              <span
+                class="fa fa-paperclip"
+              />
+            </b-button-stub>
+             
+            <b-dropdown-stub
+              boundary="scrollParent"
+              class="ml-1"
+              offset="0"
+              role="menu"
+              text=""
+              toggletag="button"
+              toggletext="Toggle Dropdown"
+              variant="light"
+            >
+              <template>
+                <span
+                  class="fa fa-tags"
+                />
+              </template>
+               
+              <b-dropdown-item-stub
+                event="click"
+                href="#"
+                routertag="a"
+                target="_self"
+              >
+                add label 
+                <b-badge-stub
+                  event="click"
+                  routertag="a"
+                  tag="span"
+                  target="_self"
+                  variant="danger"
+                >
+                   Home
+                </b-badge-stub>
+              </b-dropdown-item-stub>
+               
+              <b-dropdown-item-stub
+                event="click"
+                href="#"
+                routertag="a"
+                target="_self"
+              >
+                add label 
+                <b-badge-stub
+                  event="click"
+                  routertag="a"
+                  tag="span"
+                  target="_self"
+                  variant="info"
+                >
+                   Job
+                </b-badge-stub>
+              </b-dropdown-item-stub>
+               
+              <b-dropdown-item-stub
+                event="click"
+                href="#"
+                routertag="a"
+                target="_self"
+              >
+                add label 
+                <b-badge-stub
+                  event="click"
+                  routertag="a"
+                  tag="span"
+                  target="_self"
+                  variant="success"
+                >
+                   Clients
+                </b-badge-stub>
+              </b-dropdown-item-stub>
+               
+              <b-dropdown-item-stub
+                event="click"
+                href="#"
+                routertag="a"
+                target="_self"
+              >
+                add label 
+                <b-badge-stub
+                  event="click"
+                  routertag="a"
+                  tag="span"
+                  target="_self"
+                  variant="warning"
+                >
+                   News
+                </b-badge-stub>
+              </b-dropdown-item-stub>
+            </b-dropdown-stub>
+          </div>
+           
+          <div
+            class="form-group mt-4"
+          >
+            <textarea
+              class="form-control"
+              id="message"
+              name="body"
+              placeholder="Click here to reply"
+              rows="12"
+            />
+          </div>
+           
+          <div
+            class="form-group"
+          >
+            <b-button-stub
+              class="mr-1"
+              event="click"
+              routertag="a"
+              tag="button"
+              target="_self"
+              type="submit"
+              variant="success"
+            >
+              Send
+            </b-button-stub>
+             
+            <b-button-stub
+              class="mr-1"
+              event="click"
+              routertag="a"
+              tag="button"
+              target="_self"
+              type="submit"
+              variant="light"
+            >
+              Draft
+            </b-button-stub>
+             
+            <b-button-stub
+              class="mr-1"
+              event="click"
+              routertag="a"
+              tag="button"
+              target="_self"
+              type="submit"
+              variant="danger"
+            >
+              Discard
+            </b-button-stub>
+          </div>
+        </b-col-stub>
+      </b-row-stub>
+    </main>
+  </div>
+</div>
+`;

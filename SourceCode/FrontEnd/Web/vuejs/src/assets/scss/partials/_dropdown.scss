@@ -1,0 +1,28 @@
+.app-dropdown-center ul {
+  right: auto;
+  left: 50% !important;
+  top: 100% !important;
+  -webkit-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0) !important;
+  min-width: auto;
+}
+.app-dropdown-center .dropdown-item {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+}
+.app-dropdown-center .dropdown-item i {
+  width: 100%;
+  height: 100%;
+}
+
+.app-dropdown-center .dropdown-item:last-child {
+  border-bottom: 1px solid #c8ced3;
+}
+.app-dropdown-center li:last-child .dropdown-item {
+  border-bottom: none;
+}
+
+.dropdown-item {
+  padding: 0.25rem 0.75rem;
+}
